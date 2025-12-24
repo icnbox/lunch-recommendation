@@ -41,7 +41,7 @@ def get_lunch_recommendation(loc, food, trigger_count):
 
     # 모델은 안전하게 flash 최신 버전 사용
     response = client.models.generate_content(
-        model="gemini-1.5-flash-latest", 
+        model="gemini-flash-latest", 
         contents=prompt,
         config=types.GenerateContentConfig(
             tools=[types.Tool(google_search=types.GoogleSearch())],
@@ -57,7 +57,7 @@ st.title("🍱 오늘 뭐 먹지..?  (오늘의 점심)")
 with st.sidebar:
     st.header("옵션 설정")
     new_location = st.text_input("위치", value="하노이 미딩")
-    new_food = st.text_input("메뉴", value="한식")
+    new_food = st.text_input("메뉴", value="한식 점심")
     
     # '재검색'을 위한 카운터 (버튼 누를 때마다 1씩 증가)
     if 'search_count' not in st.session_state:
@@ -94,4 +94,5 @@ except Exception as e:
         st.warning("🚦 AI가 지금 너무 바빠요! (사용량 제한)")
         st.info("🕒 **30초만 쉬었다가** 왼쪽 사이드바의 [새로운 추천 받기] 버튼을 눌러주세요.")
     else:
+
         st.error(f"오류가 발생했어요: {e}")
