@@ -15,7 +15,7 @@ st.set_page_config(page_title="오늘의 점심 추천", page_icon="🍱", layou
 if 'location' not in st.session_state:
     st.session_state['location'] = "하노이 미딩"
 if 'food_type' not in st.session_state:
-    st.session_state['food_type'] = "한식"
+    st.session_state['food_type'] = "한식 점심"
 if 'search_trigger' not in st.session_state:
     st.session_state['search_trigger'] = True
 
@@ -126,4 +126,5 @@ if st.session_state['search_trigger']:
                 # st.caption(f"개발자용 에러 코드: {error_message}")
             else:
                 st.error(f"앗, 알 수 없는 오류가 발생했어요. 다시 시도해 주세요!")
+
                 st.error(f"에러 내용: {e}")
